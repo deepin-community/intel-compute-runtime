@@ -1,4 +1,25 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS	 = hardening=+all
+export DEB_CPPFLAGS_MAINT_STRIP = -D_FORTIFY_SOURCE=3
+
 %:
-	dh $@
+	dh $@ --builddir build/
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DSKIP_UNIT_TESTS=1 \
+		-Wno-dev
+
+override_dh_gencontrol:
+	dh_gencontrol -- \
+		-V"igc:LLVM-Version=$(shell dpkg-query -f '$${Provides}' -W libigc1 | sed -rn 's/.*libigc1\+llvm([0-9]+).*/\1/p')" \
+		-V"igc:Upstream-Version=$(shell dpkg-query -f '$${source:Upstream-Version}' -W libigc1)"
+
+get-orig-source: SOURCE=intel-compute-runtime
+get-orig-source: UV=$(shell dpkg-parsechangelog|awk '/^Version:/ {print $$2}'|sed 's/-.*$$//')
+get-orig-source:
+	tar --transform 's,^,$(SOURCE)-$(UV)/,' \
+		--exclude '^debian' --exclude-vcs \
+		-cJf ../$(SOURCE)_$(UV).orig.tar.xz .

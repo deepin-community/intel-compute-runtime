@@ -1,5 +1,195 @@
-template-repository (1.0-1) unstable; urgency=medium
+intel-compute-runtime (24.13.29138.7-1) unstable; urgency=medium
 
-  * Initial release
+  [ Timo Aaltonen ]
+  * New upstream release.
+  * typos.patch: Refreshed.
+  * control: Bump igc build-deps.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+  [ Steve Langasek ]
+  * Exclude _FORTIFY_SOURCE from dpkg-builflags to avoid a redefinition and
+    a build failure.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Wed, 17 Apr 2024 15:43:28 +0300
+
+intel-compute-runtime (23.43.27642.40-1) unstable; urgency=medium
+
+  * New upstream release.
+  * typos.patch: Refreshed.
+  * control: Bump igc build-depends.
+  * control: Migrate to pkgconf.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Mon, 26 Feb 2024 13:46:36 +0200
+
+intel-compute-runtime (23.35.27191.9-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Fri, 06 Oct 2023 13:06:45 +0300
+
+intel-compute-runtime (23.35~git20230926-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #1051189, #1052513)
+  * Split packaging so ocloc and level zero files are in their own
+    packages.
+  * rules: Add get-orig-source target.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Wed, 27 Sep 2023 11:28:03 +0300
+
+intel-compute-runtime (23.13.26032.7-1) experimental; urgency=medium
+
+  * New upstream release.
+  * control: Bump igc build-depends.
+  * control: Bump libze-dev build-dep.
+  * rules: Skip unit tests.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Sat, 15 Apr 2023 00:09:48 +0300
+
+intel-compute-runtime (22.43.24595.41-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Enable level-zero, add libze-dev to build-depends.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Tue, 10 Jan 2023 16:49:25 +0200
+
+intel-compute-runtime (22.43.24595.35-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Thu, 08 Dec 2022 15:28:23 +0200
+
+intel-compute-runtime (22.39.24347-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Tue, 04 Oct 2022 16:53:29 +0300
+
+intel-compute-runtime (22.34.24023-2) unstable; urgency=medium
+
+  [ Andreas Beckmann ]
+  * Add salsa-ci.yml.
+
+  [ Timo Aaltonen ]
+  * control: Bump build-dep on igc.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Tue, 20 Sep 2022 15:36:21 +0300
+
+intel-compute-runtime (22.34.24023-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Drop i386, it's not supported anymore.
+  * typos.patch: Refreshed.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Fri, 26 Aug 2022 13:53:36 +0300
+
+intel-compute-runtime (22.31.23852-1) unstable; urgency=medium
+
+  * New upstream release.  (Closes: #1016951)
+  * patches: Drop correct-getters-in-generated-commands.diff (upstream),
+    refresh typos.patch.
+  * control: Bump i-g-c build-depends.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Mon, 15 Aug 2022 19:01:19 +0300
+
+intel-compute-runtime (22.14.22890-2) unstable; urgency=medium
+
+  * Merge changes from 21.32.20609-3.
+  * Upload to unstable.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sat, 18 Jun 2022 03:46:24 +0200
+
+intel-compute-runtime (22.14.22890-1) experimental; urgency=medium
+
+  * New upstream release.
+  * correct-getters-in-generated-commands.diff: Fix XE_HP tests, drop
+    the cmake config to disable XE_HP support.
+  * patches: Refreshed, added a new file to typos.patch.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Sun, 10 Apr 2022 12:17:13 +0300
+
+intel-compute-runtime (22.13.22789-1) experimental; urgency=medium
+
+  [ Timo Aaltonen ]
+  * New upstream release.
+  * patches: Refreshed.
+  * control: Bump libigc1/libigdfcl-dev build-depends.
+  * rules: Disable XE_HP* support as the tests fail.
+
+  [ Andreas Beckmann ]
+  * control, rules: Tighten dependencies on the igc version used at build
+    time. Tighten dependencies on the llvm version used to build igc.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Wed, 06 Apr 2022 09:57:58 +0300
+
+intel-compute-runtime (21.32.20609-3) unstable; urgency=medium
+
+  * control, rules: Tighten dependencies on the igc version used at build
+    time. Tighten dependencies on the llvm version used to build igc.
+  * Manually activate the ldconfig trigger for unversioned libocloc.so.
+  * Enable all hardening flags.
+  * control: Bump policy to 4.6.1.
+
+ -- Andreas Beckmann <anbe@debian.org>  Sun, 22 May 2022 14:47:21 +0200
+
+intel-compute-runtime (21.32.20609-2) unstable; urgency=medium
+
+  * control: Drop superfluous (Build-)Depends.  (Closes: #1004885)
+  * control: Set Architecture: any-amd64 any-i386.
+  * control: Switch to debhelper-compat (= 13).
+  * control: Set Rules-Requires-Root: no.
+  * control: Bump policy to 4.6.0.
+  * control, rules: Depend on the igc version used at build time.
+    (Closes: #994833)
+  * upstream/metadata: Add.
+  * tests/control: Add superficial build-needed autopkgtest to detect
+    incompatible intel-graphics-compiler builds.  (Closes: #998058)
+  * Fix typos.
+  * Update Lintian overrides.
+  * Add myself to Uploaders.
+
+ -- Andreas Beckmann <anbe@debian.org>  Thu, 17 Feb 2022 11:03:23 +0100
+
+intel-compute-runtime (21.32.20609-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Migrate to llvm 12.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Tue, 17 Aug 2021 16:29:29 +0300
+
+intel-compute-runtime (20.44.18297-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Migrate to llvm 11.
+  * control: Bump depends on IGC.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Fri, 13 Nov 2020 23:49:23 +0200
+
+intel-compute-runtime (20.37.17906-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Bump libigc-dev/libigdfcl-dev build-depends.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Tue, 22 Sep 2020 19:07:08 +0300
+
+intel-compute-runtime (20.13.16352-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Use debhelper-compat, bump to 12.
+  * control: Bump policy to 4.5.0.
+  * Build with llvm-10, bump dependencies. (LP: #1871345)
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Wed, 08 Apr 2020 22:55:41 +0300
+
+intel-compute-runtime (20.02.15268-1) unstable; urgency=medium
+
+  * New upstream release.
+  * control: Migrate to llvm9.
+  * control: Bump depends on opencl-clang, intel-graphics-compiler,
+    intel-gmmlib. (Closes: #946752)
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Wed, 22 Jan 2020 16:05:09 +0200
+
+intel-compute-runtime (19.29.13530-1) unstable; urgency=medium
+
+  * Initial release (Closes: #926706)
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Thu, 01 Aug 2019 12:26:37 +0300

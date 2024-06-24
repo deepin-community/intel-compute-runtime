@@ -1,0 +1,76 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix typos found by Lintian
+
+--- a/shared/offline_compiler/source/multi_command.cpp
++++ b/shared/offline_compiler/source/multi_command.cpp
+@@ -45,7 +45,7 @@ int MultiCommand::singleBuild(const std:
+     if (retVal == OCLOC_SUCCESS) {
+         outputFile << getCurrentDirectoryOwn(outDirForBuilds) + outFileName;
+     } else {
+-        outputFile << "Unsuccesful build";
++        outputFile << "Unsuccessful build";
+     }
+     outputFile << '\n';
+ 
+@@ -166,7 +166,7 @@ Usage: ocloc multi <file_name>
+                 '-file <filename> -device <device_type> [compile_options]'.
+                 See 'ocloc compile --help' for available compile_options.
+                 Results of subsequent compilations will be dumped into 
+-                a directory with name indentical file_name's base name.
++                a directory with name identical file_name's base name.
+ 
+   -output_file_list             Name of optional file containing 
+                                 paths to outputs .bin files
+--- a/shared/source/compiler_interface/linker.cpp
++++ b/shared/source/compiler_interface/linker.cpp
+@@ -567,7 +567,7 @@ std::string constructRelocationsDebugMes
+         return "";
+     }
+     std::stringstream stream;
+-    stream << "Relocations debug informations :\n";
++    stream << "Relocations debug information :\n";
+     for (const auto &symbol : relocatedSymbols) {
+         stream << " * \"" << symbol.first << "\" [" << symbol.second.symbol.size << " bytes]";
+         stream << " " << asString(symbol.second.symbol.segment) << "_SEGMENT@" << symbol.second.symbol.offset;
+--- a/shared/source/compiler_interface/linker.h
++++ b/shared/source/compiler_interface/linker.h
+@@ -45,7 +45,7 @@ enum class LinkingStatus : uint32_t {
+ inline const char *asString(SegmentType segment) {
+     switch (segment) {
+     default:
+-        return "UNKOWN";
++        return "UNKNOWN";
+     case SegmentType::globalConstants:
+         return "GLOBAL_CONSTANTS";
+     case SegmentType::globalVariables:
+--- a/shared/test/unit_test/compiler_interface/linker_tests.cpp
++++ b/shared/test/unit_test/compiler_interface/linker_tests.cpp
+@@ -32,7 +32,7 @@
+ #include <string>
+ 
+ TEST(SegmentTypeTests, givenSegmentTypeWhenAsStringIsCalledThenProperRepresentationIsReturned) {
+-    EXPECT_STREQ("UNKOWN", NEO::asString(NEO::SegmentType::unknown));
++    EXPECT_STREQ("UNKNOWN", NEO::asString(NEO::SegmentType::unknown));
+     EXPECT_STREQ("GLOBAL_CONSTANTS", NEO::asString(NEO::SegmentType::globalConstants));
+     EXPECT_STREQ("GLOBAL_VARIABLES", NEO::asString(NEO::SegmentType::globalVariables));
+     EXPECT_STREQ("INSTRUCTIONS", NEO::asString(NEO::SegmentType::instructions));
+@@ -1763,7 +1763,7 @@ TEST(RelocationsDebugMessageTests, given
+     auto message = NEO::constructRelocationsDebugMessage(symbols);
+ 
+     std::stringstream expected;
+-    expected << "Relocations debug informations :\n";
++    expected << "Relocations debug information :\n";
+     for (const auto &symbol : symbols) {
+         if (symbol.first == "foo") {
+             expected << " * \"foo\" [1024 bytes] INSTRUCTIONS_SEGMENT@64 -> 0x1000 GPUVA\n";
+--- a/opencl/test/unit_test/offline_compiler/offline_compiler_tests.cpp
++++ b/opencl/test/unit_test/offline_compiler/offline_compiler_tests.cpp
+@@ -388,7 +388,7 @@ Usage: ocloc multi <file_name>
+                 '-file <filename> -device <device_type> [compile_options]'.
+                 See 'ocloc compile --help' for available compile_options.
+                 Results of subsequent compilations will be dumped into 
+-                a directory with name indentical file_name's base name.
++                a directory with name identical file_name's base name.
+ 
+   -output_file_list             Name of optional file containing 
+                                 paths to outputs .bin files
