@@ -1,0 +1,95 @@
+components:
+  aub_stream:
+    branch: master
+    dest_dir: aub_stream
+    repository: https://github.com/intel/aubstream
+    revision: 8bee3507b4d6815745cb60024bf575c15ef645c5
+    type: git
+  gmmlib:
+    asset_name: gmmlib
+    dest_dir: gmmlib
+    type: git
+    branch: master
+    revision: intel-gmmlib-22.3.18
+    repository: https://github.com/intel/gmmlib.git
+  igc:
+    asset_name: igc
+    dest_dir: igc
+    type: git
+    branch: releases/igc-1.0.16510
+    revision: igc-1.0.16510.2
+    repository: https://github.com/intel/intelgraphicscompiler
+  igsc:
+    asset_name: igsc
+    dest_dir: igsc
+    type: git
+    branch: master
+    revision: V0.8.16
+    repository: https://github.com/intel/igsc.git
+    component_version: 216
+  infra:
+    branch: neo/releases/24.13
+    dest_dir: infra
+    fetch_tags: true
+    revision: v5872.1800.0
+    type: git
+  internal:
+    branch: master
+    dest_dir: internal
+    revision: FETCH_HEAD
+    type: git
+  kernels_bin:
+    dest_dir: kernels_bin
+    type: git
+    branch: kernels_bin
+    revision: 2345-1546
+  kmdaf:
+    branch: kmdaf
+    dest_dir: kmdaf
+    revision: c6d3572fb36789df452ca417454272a2a92b78fc
+    type: git
+  level_zero:
+    asset_name: level_zero
+    dest_dir: level_zero
+    type: git
+    branch: master
+    revision: v1.16.14
+    repository: https://github.com/oneapi-src/level-zero
+  libva:
+    asset_name: libva
+    dest_dir: libva
+    type: git
+    branch: v2.2-branch
+    revision: 2.2.0
+    repository: https://github.com/intel/libva.git
+  metrics-discovery:
+    asset_name: metrics-discovery
+    dest_dir: metrics/discovery
+    type: git
+    branch: master
+    revision: metrics-discovery-1.12.171
+    repository: https://github.com/intel/metrics-discovery.git
+  metrics-library:
+    asset_name: metrics-library
+    dest_dir: metrics/library
+    type: git
+    branch: master
+    revision: metrics-library-1.0.161
+    repository: https://github.com/intel/metrics-library.git
+  neo-clang-format:
+    dest_dir: tools/clang-format
+    type: git
+    branch: clang-format
+    revision: 15.0.6
+  wdk:
+    dest_dir: wdk
+    type: git
+    branch: wdk
+    revision: f22efc5a3b252d5da55da480608247df75827c6e-2290
+  wsl:
+    branch: wsl
+    dest_dir: wsl
+    revision: 56430997dac34ca0e9e18c177636234cac26ad54
+    type: git
+converter: M-2345
+version: '1'
